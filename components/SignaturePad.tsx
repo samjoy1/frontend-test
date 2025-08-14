@@ -5,9 +5,13 @@ import SignatureCanvas from "react-signature-canvas";
 
 type SignaturePadProps = {
   onSave: (dataUrl: string) => void;
+  clearOnSave?: boolean; // add this prop
 };
 
-export default function SignaturePad({ onSave }: SignaturePadProps) {
+export default function SignaturePad({
+  onSave,
+  clearOnSave = false,
+}: SignaturePadProps) {
   const sigCanvasRef = useRef<SignatureCanvas>(null);
 
   const clear = () => sigCanvasRef.current?.clear();
@@ -16,6 +20,10 @@ export default function SignaturePad({ onSave }: SignaturePadProps) {
     if (sigCanvasRef.current && !sigCanvasRef.current.isEmpty()) {
       const dataUrl = sigCanvasRef.current.toDataURL();
       onSave(dataUrl);
+
+      if (clearOnSave) {
+        clear();
+      }
     } else {
       alert("Please provide a signature before saving.");
     }
