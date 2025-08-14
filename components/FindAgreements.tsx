@@ -3,7 +3,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import Image from "next/image";
 import SignaturePad from "./SignaturePad";
-import { RootState, AppDispatch } from "..//store/store"; // Adjust the path to your store
+import { AppDispatch } from "..//store/store"; // Adjust the path to your store
 import { setStep, selectStep } from "../store/slices/stepSlice";
 import {
   setPostcode,
@@ -27,7 +27,7 @@ import {
   selectMobile,
   selectEmail,
 } from "../store/slices/contactSlice";
-import { setSignature, selectSignature } from "../store/slices/signatureSlice";
+import { setSignature } from "../store/slices/signatureSlice";
 
 export default function FindAgreements() {
   const dispatch = useDispatch<AppDispatch>();
@@ -48,9 +48,6 @@ export default function FindAgreements() {
   // Contact state
   const mobile = useSelector(selectMobile);
   const email = useSelector(selectEmail);
-
-  // Signature state
-  const signatureData = useSelector(selectSignature);
 
   // Validate postcode (same regex)
   const validatePostcode = (code: string) => {
@@ -149,7 +146,7 @@ export default function FindAgreements() {
       {step === "postcode" && (
         <form onSubmit={handlePostcodeSubmit} className="flex flex-col mb-4">
           <label className="mb-2 font-medium text-gray-700">
-            Enter your postcode and tap 'Search'.
+            Enter your postcode and tap Search.
           </label>
           <div className="flex w-full max-w-sm gap-2 mb-2">
             <input
