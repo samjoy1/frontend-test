@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-type Step = "start" | "postcode" | "details" | "contact" | "signature" ;
+type Step = "start" | "postcode" | "details" | "contact" | "signature" | "complete" ;
 
 interface StepState {
   currentStep: Step;

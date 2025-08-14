@@ -1,5 +1,6 @@
 // store/slices/signatureSlice.ts
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "../store";
 
 interface SignatureState {
   dataUrl: string | null;
